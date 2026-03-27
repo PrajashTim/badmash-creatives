@@ -85,42 +85,46 @@ export default function ServicesPage() {
   return (
     <>
       <Navbar />
-      <main className="pt-[72px]">
+      <main>
         {/* Hero */}
-        <section className="bg-[#1a1a2e] py-20 text-[#f0ede6]">
-          <div className="max-w-[1140px] mx-auto px-6 text-center">
-            <span className="font-mono text-[11px] tracking-[3px] uppercase text-[#d4a843] mb-4 block">What We Do</span>
-            <h1 className="font-display text-[clamp(36px,5vw,64px)] font-black leading-[1.05] mb-4">
+        <section style={{background:"var(--bg-dark)", paddingTop:"var(--section-pad)", paddingBottom:"var(--section-pad)", color:"var(--text-light)"}}>
+          <div className="container" style={{textAlign:"center"}}>
+            <span className="section-label">What We Do</span>
+            <h2 style={{fontFamily:"var(--font-display)", fontSize:"clamp(32px, 4vw, 56px)", fontWeight:900, lineHeight:1.05, marginBottom:"20px"}}>
               Our Services
-            </h1>
-            <p className="text-[17px] text-[#b8b8cc] max-w-[560px] mx-auto leading-[1.8]">
+            </h2>
+            <p style={{fontSize:"16px", color:"var(--text-body-light)", maxWidth:"640px", margin:"0 auto", lineHeight:1.8}}>
               Everything we offer is designed for one outcome: more qualified clients walking through your door.
             </p>
           </div>
         </section>
 
-        {/* Services grid */}
-        <section className="py-20 bg-[#f5f3ef]">
-          <div className="max-w-[1140px] mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-dashed border-[#1a1a2e]/12">
+        {/* Services grid - 3 cols */}
+        <section style={{padding:"var(--section-pad) 0", background:"var(--bg-light)"}}>
+          <div className="container">
+            <div style={{display:"grid", gridTemplateColumns:"repeat(3, 1fr)", gap:0, border:"1px dashed rgba(26,26,46,0.15)"}}>
               {services.map((s, i) => (
                 <Link
                   key={s.href}
                   href={s.href}
-                  className={`p-10 group transition-colors duration-300 hover:bg-[#f0e6d3]/50 ${
-                    i % 3 !== 2 ? "lg:border-r border-dashed border-[#1a1a2e]/12" : ""
-                  } ${
-                    i % 2 !== 1 ? "md:border-r md:lg:border-r-0 border-dashed border-[#1a1a2e]/12 lg:border-r-0" : ""
-                  } ${
-                    i < 3 ? "border-b border-dashed border-[#1a1a2e]/12" : ""
-                  }`}
+                  style={{
+                    padding:"40px 32px",
+                    borderRight:i % 3 !== 2 ? "1px dashed rgba(26,26,46,0.15)" : "none",
+                    borderBottom:i < 3 ? "1px dashed rgba(26,26,46,0.15)" : "none",
+                    transition:"background 0.3s",
+                    display:"block",
+                    textDecoration:"none",
+                    color:"inherit",
+                  }}
+                  onMouseEnter={(e) => e.currentTarget.style.background = "rgba(240,230,211,0.5)"}
+                  onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}
                 >
-                  <div className="w-11 h-11 bg-[#f0e6d3] rounded-[10px] flex items-center justify-center mb-5">
+                  <div style={{width:"44px", height:"44px", background:"var(--bg-icon)", borderRadius:"10px", display:"flex", alignItems:"center", justifyContent:"center", marginBottom:"16px"}}>
                     {s.icon}
                   </div>
-                  <h3 className="font-display text-[22px] font-bold mb-3 group-hover:text-[#d4a843] transition-colors">{s.title}</h3>
-                  <p className="text-[14px] text-[#4a4a5a] leading-[1.7] mb-4">{s.desc}</p>
-                  <span className="text-[13px] font-bold tracking-[1px] uppercase text-[#d4a843]">Learn More →</span>
+                  <h3 style={{fontFamily:"var(--font-display)", fontSize:"18px", fontWeight:700, marginBottom:"8px"}}>{s.title}</h3>
+                  <p style={{fontSize:"14px", color:"var(--text-body-dark)", lineHeight:1.7, marginBottom:"12px"}}>{s.desc}</p>
+                  <span style={{fontSize:"13px", fontWeight:700, letterSpacing:"1px", textTransform:"uppercase", color:"var(--gold)"}}>Learn More →</span>
                 </Link>
               ))}
             </div>
@@ -128,12 +132,12 @@ export default function ServicesPage() {
         </section>
 
         {/* CTA */}
-        <section className="py-20 bg-[#1a1a2e] text-center">
-          <div className="max-w-[1140px] mx-auto px-6">
-            <h2 className="font-display text-[clamp(28px,4vw,40px)] font-black text-[#f0ede6] mb-4">
+        <section style={{padding:"var(--section-pad) 0", background:"var(--bg-dark)", color:"var(--text-light)", textAlign:"center"}}>
+          <div className="container">
+            <h2 style={{fontFamily:"var(--font-display)", fontSize:"clamp(32px, 4.5vw, 52px)", fontWeight:900, marginBottom:"16px"}}>
               Not Sure Which Service You Need?
             </h2>
-            <p className="text-[16px] text-[#b8b8cc] max-w-[480px] mx-auto mb-8 leading-[1.8]">
+            <p style={{fontSize:"16px", color:"var(--text-body-light)", maxWidth:"580px", margin:"0 auto 32px", lineHeight:1.8}}>
               Book a free strategy call. We&apos;ll look at your current presence and tell you exactly where to start.
             </p>
             <ButtonPrimary href="/get-started">Book A Strategy Call →</ButtonPrimary>

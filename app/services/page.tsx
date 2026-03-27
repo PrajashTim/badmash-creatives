@@ -107,6 +107,7 @@ export default function ServicesPage() {
                 <Link
                   key={s.href}
                   href={s.href}
+                  className="area-item"
                   style={{
                     padding:"40px 32px",
                     borderRight:i % 3 !== 2 ? "1px dashed rgba(26,26,46,0.15)" : "none",
@@ -116,8 +117,6 @@ export default function ServicesPage() {
                     textDecoration:"none",
                     color:"inherit",
                   }}
-                  onMouseEnter={(e) => e.currentTarget.style.background = "rgba(240,230,211,0.5)"}
-                  onMouseLeave={(e) => e.currentTarget.style.background = "transparent"}
                 >
                   <div style={{width:"44px", height:"44px", background:"var(--bg-icon)", borderRadius:"10px", display:"flex", alignItems:"center", justifyContent:"center", marginBottom:"16px"}}>
                     {s.icon}

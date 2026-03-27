@@ -7,10 +7,15 @@ interface CountUpNumberProps {
   duration?: number;
 }
 
-export default function CountUpNumber({ value, duration = 2000 }: CountUpNumberProps) {
+export default function CountUpNumber({ value, duration = 2800 }: CountUpNumberProps) {
   const [displayValue, setDisplayValue] = useState(value);
   const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+
+  // Easing function: cubic-ease-out for smooth deceleration
+  const easeOutCubic = (t: number): number => {
+    return 1 - Math.pow(1 - t, 3);
+  };
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -27,8 +32,9 @@ export default function CountUpNumber({ value, duration = 2000 }: CountUpNumberP
 
           const animate = () => {
             const elapsed = Date.now() - startTime;
-            const progress = Math.min(elapsed / duration, 1);
-            const currentNumber = Math.floor(finalNumber * progress);
+            const rawProgress = Math.min(elapsed / duration, 1);
+            const easedProgress = easeOutCubic(rawProgress);
+            const currentNumber = Math.floor(finalNumber * easedProgress);
 
             // Reconstruct the value with proper formatting
             let displayText = value;
@@ -44,7 +50,7 @@ export default function CountUpNumber({ value, duration = 2000 }: CountUpNumberP
 
             setDisplayValue(displayText);
 
-            if (progress < 1) {
+            if (rawProgress < 1) {
               requestAnimationFrame(animate);
             }
           };

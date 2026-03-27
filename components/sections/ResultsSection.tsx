@@ -1,3 +1,5 @@
+import CountUpNumber from "@/components/CountUpNumber";
+
 export const resultsData = [
   { client: "Estate Planning Firm", number: "+340%", metric: "YouTube Subscriber Growth", caseStudyHref: "#" },
   { client: "Estate Planning Firm", number: "50+", metric: "Videos Produced & Optimized", caseStudyHref: "#" },
@@ -14,19 +16,19 @@ export default function ResultsSection() {
         <div className="results-grid">
           <div className="result-card">
             <div className="result-logo">Estate Planning Firm</div>
-            <div className="result-number">+340%</div>
+            <div className="result-number"><CountUpNumber value="+340%" /></div>
             <div className="result-metric">YouTube Subscriber Growth</div>
             <a href="#" className="result-link">View case study &rarr;</a>
           </div>
           <div className="result-card">
             <div className="result-logo">Estate Planning Firm</div>
-            <div className="result-number">50+</div>
+            <div className="result-number"><CountUpNumber value="50+" /></div>
             <div className="result-metric">Videos Produced &amp; Optimized</div>
             <a href="#" className="result-link">View case study &rarr;</a>
           </div>
           <div className="result-card">
             <div className="result-logo">Estate Planning Firm</div>
-            <div className="result-number">3X</div>
+            <div className="result-number"><CountUpNumber value="3X" /></div>
             <div className="result-metric">Increase in Consultation Requests</div>
             <a href="#" className="result-link">View case study &rarr;</a>
           </div>
